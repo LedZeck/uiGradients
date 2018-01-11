@@ -9,6 +9,7 @@
 
     <div class="actionbar__section actionbar__section--swatch tac">
       <template v-for="(color, index) in gradient.colors">
+        {{color}}
         <Swatch
           :color="color"
           :gradient="gradient"
@@ -60,6 +61,7 @@
             data-tooltip="Get .jpg">
             <Download class="actionbar__nav-icon actionbar__nav-icon--download" />
           </a>
+          <li @click.prevent="hashRemoval()">A</li>
         </li>
       </ul>
     </div>
@@ -78,7 +80,7 @@ import Download from '../assets/download.svg';
 
 export default {
   name: 'actionbar',
-  props: ['gradient', 'palette', 'showModal', 'updateDirection', 'downloadGradient'],
+  props: ['gradient', 'palette', 'showModal', 'updateDirection', 'downloadGradient', 'hashRemoval'],
   components: {
     Rotate, Add, Brackets, Swatch, Help, Download,
   },

@@ -14,7 +14,8 @@
       :closeModals="closeModals"
       :downloadGradient="downloadGradient"
       :updateDirection="updateDirection"
-      @togglePalette="togglePalette" />
+      :hashRemoval="removeHash"
+      @togglePalette="togglePalette"/>
     <List
       :gradients="gradients"
       :direction="currentDirection"
@@ -171,6 +172,14 @@ export default {
       this.fetchGradients();
       this.setCurrentGradient();
       this.fadePreloader();
+    },
+
+    removeHash() {
+      const colorValues = this.currentGradient.colors;
+      this.currentGradient.colors = colorValues.map((value) => {
+        const replaceString = value.replace('#', '');
+        return replaceString;
+      });
     },
   },
   watch: {
